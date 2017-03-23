@@ -34,6 +34,19 @@ namespace XKCDPasswordGenerator
             }
         }
 
+        public override bool SupportsOptions
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override string GetOptions(string strCurrentOptions)
+        {
+
+        }
+
         public override ProtectedString Generate(PwProfile prf, CryptoRandomStream crsRandomSource)
         {
             string targetSequence = string.Empty;
