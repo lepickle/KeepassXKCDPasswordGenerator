@@ -9,15 +9,18 @@ using KeePassLib.Cryptography;
 using KeePassLib.Cryptography.PasswordGenerator;
 using KeePassLib.Security;
 
+using XKCDPasswordGenerator.Forms;
+
 namespace XKCDPasswordGenerator
 {
     public class Generator : CustomPwGenerator
     {
-        private static readonly PwUuid UUID =
-            new PwUuid(new byte[] {
-                        0x53, 0x81, 0x36, 0x0E, 0xA7, 0xFC, 0x48, 0x36,
-                        0x9E, 0x9F, 0xA4, 0x4F, 0x1A, 0xF0, 0x58, 0x37
-            });
+        private static readonly PwUuid UUID = new PwUuid(Guid.NewGuid().ToByteArray());
+        //new PwUuid(new byte[] {
+        //            0x53, 0x81, 0x36, 0x0E, 0xA7, 0xFC, 0x48, 0x36,
+        //            0x9E, 0x9F, 0xA4, 0x4F, 0x1A, 0xF0, 0x58, 0x37
+        //});
+
         public override PwUuid Uuid
         {
             get
@@ -44,7 +47,11 @@ namespace XKCDPasswordGenerator
 
         public override string GetOptions(string strCurrentOptions)
         {
+            OptionsForm optionsForm = new OptionsForm();
+            optionsForm.ShowDialog();
 
+            return "";
+            
         }
 
         public override ProtectedString Generate(PwProfile prf, CryptoRandomStream crsRandomSource)
@@ -61,6 +68,12 @@ namespace XKCDPasswordGenerator
             //}
             return new ProtectedString(true, targetSequence);
             //throw new NotImplementedException();
+        }
+
+
+        public void Generate_WordList()
+        {
+
         }
     }
 }

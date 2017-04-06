@@ -61,52 +61,7 @@ namespace XKCDPasswordGenerator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string Acrostic {
-            get {
-                return ResourceManager.GetString("Acrostic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string Delimiter {
-            get {
-                return ResourceManager.GetString("Delimiter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string MaxChars {
-            get {
-                return ResourceManager.GetString("MaxChars", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string MinChars {
-            get {
-                return ResourceManager.GetString("MinChars", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string ValidChars {
-            get {
-                return ResourceManager.GetString("ValidChars", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to default.txt.
         /// </summary>
         internal static string WordListLocation {
             get {

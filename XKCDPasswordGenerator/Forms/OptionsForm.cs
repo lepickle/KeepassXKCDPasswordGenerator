@@ -17,7 +17,33 @@ namespace XKCDPasswordGenerator.Forms
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OptionsForm_Load(object sender, EventArgs e)
+        {
+            txt_Word_List_Location.Text = Properties.Resources.WordListLocation;
+            string[] lines = System.IO.File.ReadAllLines(Properties.Resources.WordListLocation);
+        }
+
+        private bool is_acrostic()
+        {
+            return cb_Acrostic.Checked ? true : false;
+        }
+
+        private bool is_delimited()
+        {
+            return cb_Delimiter.Checked ? true : false;
+        }
+
+        private bool is_maxchar_enabled()
+        {
+            return cb_Max_Chars.Checked ? true : false;
+        }
+
+        private bool is_minchar_enabled()
+        {
+            return cb_Min_Chars.Checked ? true : false;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
