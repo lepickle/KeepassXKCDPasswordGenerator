@@ -16,10 +16,7 @@ namespace XKCDPasswordGenerator
     public class Generator : CustomPwGenerator
     {
         private static readonly PwUuid UUID = new PwUuid(Guid.NewGuid().ToByteArray());
-        //new PwUuid(new byte[] {
-        //            0x53, 0x81, 0x36, 0x0E, 0xA7, 0xFC, 0x48, 0x36,
-        //            0x9E, 0x9F, 0xA4, 0x4F, 0x1A, 0xF0, 0x58, 0x37
-        //});
+        PasswordSequenceConfiguration psc = new PasswordSequenceConfiguration();
 
         public override PwUuid Uuid
         {
@@ -50,30 +47,32 @@ namespace XKCDPasswordGenerator
             OptionsForm optionsForm = new OptionsForm();
             optionsForm.ShowDialog();
 
+            if (optionsForm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                psc = optionsForm.PasswordSequenceConfiguration;
+            }
+
             return "";
             
         }
 
         public override ProtectedString Generate(PwProfile prf, CryptoRandomStream crsRandomSource)
         {
-            string targetSequence = string.Empty;
-            for (int i = 0; i < 10; i++)
-            {
-                targetSequence += "Hello";
-            }
-            //foreach (SequenceItem sequenceItem in globalConfiguration.Sequence)
-            //{
-            //targetSequence += new ItemGenerator.ItemGenerator(globalConfiguration)
-            //                .Generate(sequenceItem, cryptoRandom);
-            //}
-            return new ProtectedString(true, targetSequence);
-            //throw new NotImplementedException();
+            return new ProtectedString(true, ChooseWords(psc.WordList, 6, crsRandomSource));
         }
 
-
-        public void Generate_WordList()
+        public string ChooseWords(string[] wordlist, uint numwords, CryptoRandomStream crs)
         {
-
+            CryptoRandomRange crr = new CryptoRandomRange(crs);
+            Random rnd = new Random();
+            string word_result = "";
+            for(int i = 0; i < numwords; i++)
+            {
+                ulong random_num = crr.GetRandomInRange(0, (ulong)wordlist.Length);
+                //int random_num = rnd.Next(0, wordlist.Length);
+                word_result += i == numwords-1 ? wordlist[random_num] + "" : wordlist[random_num] + " ";
+            }
+            return word_result;
         }
     }
 }

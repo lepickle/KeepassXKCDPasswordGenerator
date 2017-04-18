@@ -17,10 +17,25 @@ namespace XKCDPasswordGenerator.Forms
             InitializeComponent();
         }
 
+        PasswordSequenceConfiguration psc = new PasswordSequenceConfiguration();
+
         private void OptionsForm_Load(object sender, EventArgs e)
         {
             txt_Word_List_Location.Text = Properties.Resources.WordListLocation;
-            string[] lines = System.IO.File.ReadAllLines(Properties.Resources.WordListLocation);
+            psc.WordList = System.IO.File.ReadAllLines(Properties.Resources.WordListLocation);
+        }
+
+        public PasswordSequenceConfiguration PasswordSequenceConfiguration
+        {
+            get
+            {
+                return psc;
+            }
+        }
+
+        private bool is_wordcount_enabled()
+        {
+            return cb_WordCount.Checked ? true : false;
         }
 
         private bool is_acrostic()
@@ -43,9 +58,14 @@ namespace XKCDPasswordGenerator.Forms
             return cb_Min_Chars.Checked ? true : false;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btn_OptionFormOK_Click(object sender, EventArgs e)
         {
-
+            psc.IsAcrostic = is_acrostic();
+            psc.IsDelimited = is_delimited();
+            psc.IsMaxCharEnabled = is_maxchar_enabled();
+            psc.IsMinCharEnabled = is_minchar_enabled();
+            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

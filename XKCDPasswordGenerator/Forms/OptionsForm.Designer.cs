@@ -44,13 +44,15 @@
             this.txt_Acrostic = new System.Windows.Forms.TextBox();
             this.cb_Acrostic = new System.Windows.Forms.CheckBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txt_WordCount = new System.Windows.Forms.TextBox();
+            this.cb_WordCount = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txt_WordCount);
+            this.panel2.Controls.Add(this.cb_WordCount);
             this.panel2.Controls.Add(this.txt_Word_List_Location);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btn_OpenWordList);
@@ -72,7 +74,7 @@
             // 
             // txt_Word_List_Location
             // 
-            this.txt_Word_List_Location.Location = new System.Drawing.Point(7, 170);
+            this.txt_Word_List_Location.Location = new System.Drawing.Point(7, 188);
             this.txt_Word_List_Location.Name = "txt_Word_List_Location";
             this.txt_Word_List_Location.ReadOnly = true;
             this.txt_Word_List_Location.Size = new System.Drawing.Size(206, 20);
@@ -81,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 154);
+            this.label1.Location = new System.Drawing.Point(4, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 14;
@@ -89,7 +91,7 @@
             // 
             // btn_OpenWordList
             // 
-            this.btn_OpenWordList.Location = new System.Drawing.Point(219, 168);
+            this.btn_OpenWordList.Location = new System.Drawing.Point(219, 186);
             this.btn_OpenWordList.Name = "btn_OpenWordList";
             this.btn_OpenWordList.Size = new System.Drawing.Size(75, 23);
             this.btn_OpenWordList.TabIndex = 13;
@@ -104,10 +106,11 @@
             this.btn_OptionFormOK.TabIndex = 12;
             this.btn_OptionFormOK.Text = "OK";
             this.btn_OptionFormOK.UseVisualStyleBackColor = true;
+            this.btn_OptionFormOK.Click += new System.EventHandler(this.btn_OptionFormOK_Click);
             // 
             // txt_Valid_Chars
             // 
-            this.txt_Valid_Chars.Location = new System.Drawing.Point(87, 107);
+            this.txt_Valid_Chars.Location = new System.Drawing.Point(90, 133);
             this.txt_Valid_Chars.Name = "txt_Valid_Chars";
             this.txt_Valid_Chars.Size = new System.Drawing.Size(207, 20);
             this.txt_Valid_Chars.TabIndex = 11;
@@ -115,7 +118,7 @@
             // cb_Valid_Chars
             // 
             this.cb_Valid_Chars.AutoSize = true;
-            this.cb_Valid_Chars.Location = new System.Drawing.Point(3, 109);
+            this.cb_Valid_Chars.Location = new System.Drawing.Point(6, 135);
             this.cb_Valid_Chars.Name = "cb_Valid_Chars";
             this.cb_Valid_Chars.Size = new System.Drawing.Size(82, 17);
             this.cb_Valid_Chars.TabIndex = 10;
@@ -124,14 +127,14 @@
             // 
             // txt_Max_Chars
             // 
-            this.txt_Max_Chars.Location = new System.Drawing.Point(87, 81);
+            this.txt_Max_Chars.Location = new System.Drawing.Point(90, 107);
             this.txt_Max_Chars.Name = "txt_Max_Chars";
             this.txt_Max_Chars.Size = new System.Drawing.Size(207, 20);
             this.txt_Max_Chars.TabIndex = 9;
             // 
             // txt_Min_Chars
             // 
-            this.txt_Min_Chars.Location = new System.Drawing.Point(87, 55);
+            this.txt_Min_Chars.Location = new System.Drawing.Point(90, 81);
             this.txt_Min_Chars.Name = "txt_Min_Chars";
             this.txt_Min_Chars.Size = new System.Drawing.Size(207, 20);
             this.txt_Min_Chars.TabIndex = 8;
@@ -139,7 +142,7 @@
             // cb_Max_Chars
             // 
             this.cb_Max_Chars.AutoSize = true;
-            this.cb_Max_Chars.Location = new System.Drawing.Point(3, 83);
+            this.cb_Max_Chars.Location = new System.Drawing.Point(6, 109);
             this.cb_Max_Chars.Name = "cb_Max_Chars";
             this.cb_Max_Chars.Size = new System.Drawing.Size(79, 17);
             this.cb_Max_Chars.TabIndex = 7;
@@ -149,7 +152,7 @@
             // cb_Min_Chars
             // 
             this.cb_Min_Chars.AutoSize = true;
-            this.cb_Min_Chars.Location = new System.Drawing.Point(3, 57);
+            this.cb_Min_Chars.Location = new System.Drawing.Point(6, 83);
             this.cb_Min_Chars.Name = "cb_Min_Chars";
             this.cb_Min_Chars.Size = new System.Drawing.Size(76, 17);
             this.cb_Min_Chars.TabIndex = 6;
@@ -158,7 +161,7 @@
             // 
             // txt_Delimiter
             // 
-            this.txt_Delimiter.Location = new System.Drawing.Point(87, 29);
+            this.txt_Delimiter.Location = new System.Drawing.Point(90, 55);
             this.txt_Delimiter.Name = "txt_Delimiter";
             this.txt_Delimiter.Size = new System.Drawing.Size(207, 20);
             this.txt_Delimiter.TabIndex = 5;
@@ -166,7 +169,7 @@
             // cb_Delimiter
             // 
             this.cb_Delimiter.AutoSize = true;
-            this.cb_Delimiter.Location = new System.Drawing.Point(3, 31);
+            this.cb_Delimiter.Location = new System.Drawing.Point(6, 57);
             this.cb_Delimiter.Name = "cb_Delimiter";
             this.cb_Delimiter.Size = new System.Drawing.Size(66, 17);
             this.cb_Delimiter.TabIndex = 4;
@@ -175,7 +178,7 @@
             // 
             // txt_Acrostic
             // 
-            this.txt_Acrostic.Location = new System.Drawing.Point(87, 3);
+            this.txt_Acrostic.Location = new System.Drawing.Point(90, 29);
             this.txt_Acrostic.Name = "txt_Acrostic";
             this.txt_Acrostic.Size = new System.Drawing.Size(207, 20);
             this.txt_Acrostic.TabIndex = 3;
@@ -183,7 +186,7 @@
             // cb_Acrostic
             // 
             this.cb_Acrostic.AutoSize = true;
-            this.cb_Acrostic.Location = new System.Drawing.Point(3, 5);
+            this.cb_Acrostic.Location = new System.Drawing.Point(6, 31);
             this.cb_Acrostic.Name = "cb_Acrostic";
             this.cb_Acrostic.Size = new System.Drawing.Size(64, 17);
             this.cb_Acrostic.TabIndex = 1;
@@ -194,15 +197,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label2
+            // txt_WordCount
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 193);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.txt_WordCount.Location = new System.Drawing.Point(90, 3);
+            this.txt_WordCount.Name = "txt_WordCount";
+            this.txt_WordCount.Size = new System.Drawing.Size(207, 20);
+            this.txt_WordCount.TabIndex = 17;
+            // 
+            // cb_WordCount
+            // 
+            this.cb_WordCount.AutoSize = true;
+            this.cb_WordCount.Location = new System.Drawing.Point(6, 5);
+            this.cb_WordCount.Name = "cb_WordCount";
+            this.cb_WordCount.Size = new System.Drawing.Size(83, 17);
+            this.cb_WordCount.TabIndex = 16;
+            this.cb_WordCount.Text = "Word Count";
+            this.cb_WordCount.UseVisualStyleBackColor = true;
             // 
             // OptionsForm
             // 
@@ -236,6 +246,7 @@
         private System.Windows.Forms.Button btn_OpenWordList;
         private System.Windows.Forms.Button btn_OptionFormOK;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_WordCount;
+        private System.Windows.Forms.CheckBox cb_WordCount;
     }
 }
