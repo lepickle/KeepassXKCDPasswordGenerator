@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txt_WordCount = new System.Windows.Forms.TextBox();
+            this.cb_WordCount = new System.Windows.Forms.CheckBox();
             this.txt_Word_List_Location = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_OpenWordList = new System.Windows.Forms.Button();
@@ -43,9 +45,7 @@
             this.cb_Delimiter = new System.Windows.Forms.CheckBox();
             this.txt_Acrostic = new System.Windows.Forms.TextBox();
             this.cb_Acrostic = new System.Windows.Forms.CheckBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.txt_WordCount = new System.Windows.Forms.TextBox();
-            this.cb_WordCount = new System.Windows.Forms.CheckBox();
+            this.wordListFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,23 @@
             this.panel2.Size = new System.Drawing.Size(297, 271);
             this.panel2.TabIndex = 0;
             // 
+            // txt_WordCount
+            // 
+            this.txt_WordCount.Location = new System.Drawing.Point(90, 3);
+            this.txt_WordCount.Name = "txt_WordCount";
+            this.txt_WordCount.Size = new System.Drawing.Size(207, 20);
+            this.txt_WordCount.TabIndex = 17;
+            // 
+            // cb_WordCount
+            // 
+            this.cb_WordCount.AutoSize = true;
+            this.cb_WordCount.Location = new System.Drawing.Point(6, 5);
+            this.cb_WordCount.Name = "cb_WordCount";
+            this.cb_WordCount.Size = new System.Drawing.Size(83, 17);
+            this.cb_WordCount.TabIndex = 16;
+            this.cb_WordCount.Text = "Word Count";
+            this.cb_WordCount.UseVisualStyleBackColor = true;
+            // 
             // txt_Word_List_Location
             // 
             this.txt_Word_List_Location.Location = new System.Drawing.Point(7, 188);
@@ -97,6 +114,7 @@
             this.btn_OpenWordList.TabIndex = 13;
             this.btn_OpenWordList.Text = "Browse";
             this.btn_OpenWordList.UseVisualStyleBackColor = true;
+            this.btn_OpenWordList.Click += new System.EventHandler(this.btn_OpenWordList_Click);
             // 
             // btn_OptionFormOK
             // 
@@ -193,26 +211,9 @@
             this.cb_Acrostic.Text = "Acrostic";
             this.cb_Acrostic.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog1
+            // wordListFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // txt_WordCount
-            // 
-            this.txt_WordCount.Location = new System.Drawing.Point(90, 3);
-            this.txt_WordCount.Name = "txt_WordCount";
-            this.txt_WordCount.Size = new System.Drawing.Size(207, 20);
-            this.txt_WordCount.TabIndex = 17;
-            // 
-            // cb_WordCount
-            // 
-            this.cb_WordCount.AutoSize = true;
-            this.cb_WordCount.Location = new System.Drawing.Point(6, 5);
-            this.cb_WordCount.Name = "cb_WordCount";
-            this.cb_WordCount.Size = new System.Drawing.Size(83, 17);
-            this.cb_WordCount.TabIndex = 16;
-            this.cb_WordCount.Text = "Word Count";
-            this.cb_WordCount.UseVisualStyleBackColor = true;
+            this.wordListFileDialog.FileName = "openFileDialog1";
             // 
             // OptionsForm
             // 
@@ -245,7 +246,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_OpenWordList;
         private System.Windows.Forms.Button btn_OptionFormOK;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog wordListFileDialog;
         private System.Windows.Forms.TextBox txt_WordCount;
         private System.Windows.Forms.CheckBox cb_WordCount;
     }

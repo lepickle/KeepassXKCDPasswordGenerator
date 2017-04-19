@@ -12,17 +12,23 @@ namespace XKCDPasswordGenerator.Forms
 {
     public partial class OptionsForm : Form
     {
-        public OptionsForm()
+        PasswordSequenceConfiguration psc;
+
+        public OptionsForm(PasswordSequenceConfiguration psc)
         {
             InitializeComponent();
+            this.psc = psc;
         }
-
-        PasswordSequenceConfiguration psc = new PasswordSequenceConfiguration();
 
         private void OptionsForm_Load(object sender, EventArgs e)
         {
-            txt_Word_List_Location.Text = Properties.Resources.WordListLocation;
-            psc.WordList = System.IO.File.ReadAllLines(Properties.Resources.WordListLocation);
+            LoadWordList();
+        }
+
+        public void LoadWordList()
+        {
+            txt_Word_List_Location.Text = Properties.Settings.Default.WordListLocation;
+            psc.WordList = System.IO.File.ReadAllLines(Properties.Settings.Default.WordListLocation);
         }
 
         public PasswordSequenceConfiguration PasswordSequenceConfiguration
@@ -66,6 +72,15 @@ namespace XKCDPasswordGenerator.Forms
             psc.IsMinCharEnabled = is_minchar_enabled();
             this.Close();
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void btn_OpenWordList_Click(object sender, EventArgs e)
+        {
+            if (wordListFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.WordListLocation = wordListFileDialog.FileName;
+                LoadWordList();
+            }
         }
     }
 }

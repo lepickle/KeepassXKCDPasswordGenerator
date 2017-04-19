@@ -44,7 +44,7 @@ namespace XKCDPasswordGenerator
 
         public override string GetOptions(string strCurrentOptions)
         {
-            OptionsForm optionsForm = new OptionsForm();
+            OptionsForm optionsForm = new OptionsForm(psc);
             optionsForm.ShowDialog();
 
             if (optionsForm.DialogResult == System.Windows.Forms.DialogResult.OK)
@@ -69,7 +69,6 @@ namespace XKCDPasswordGenerator
             for(int i = 0; i < numwords; i++)
             {
                 ulong random_num = crr.GetRandomInRange(0, (ulong)wordlist.Length);
-                //int random_num = rnd.Next(0, wordlist.Length);
                 word_result += i == numwords-1 ? wordlist[random_num] + "" : wordlist[random_num] + " ";
             }
             return word_result;
