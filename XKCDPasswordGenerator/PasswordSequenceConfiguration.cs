@@ -13,6 +13,8 @@ namespace XKCDPasswordGenerator
         private bool is_delimited;
         private bool is_maxchar_enabled;
         private bool is_minchar_enabled;
+
+        private uint word_count;
         private string[] word_list;
 
         public PasswordSequenceConfiguration()
@@ -29,6 +31,18 @@ namespace XKCDPasswordGenerator
             set
             {
                 word_list = value;
+            }
+        }
+
+        public uint Word_Count
+        {
+            get
+            {
+                return word_count;
+            }
+            set
+            {
+                word_count = value;
             }
         }
 

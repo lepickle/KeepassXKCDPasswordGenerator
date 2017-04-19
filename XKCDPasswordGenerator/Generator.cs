@@ -58,15 +58,17 @@ namespace XKCDPasswordGenerator
 
         public override ProtectedString Generate(PwProfile prf, CryptoRandomStream crsRandomSource)
         {
-            return new ProtectedString(true, ChooseWords(psc.WordList, 6, crsRandomSource));
+            return new ProtectedString(true, ChooseWords(psc.WordList, crsRandomSource));
         }
 
-        public string ChooseWords(string[] wordlist, uint numwords, CryptoRandomStream crs)
+        public string ChooseWords(string[] wordlist, CryptoRandomStream crs)
         {
             CryptoRandomRange crr = new CryptoRandomRange(crs);
-            Random rnd = new Random();
             string word_result = "";
-            for(int i = 0; i < numwords; i++)
+
+            uint numwords = psc.IsWordCountEnabled ? psc.Word_Count : 6;
+
+            for(int i = 0; i <= numwords; i++)
             {
                 ulong random_num = crr.GetRandomInRange(0, (ulong)wordlist.Length);
                 word_result += i == numwords-1 ? wordlist[random_num] + "" : wordlist[random_num] + " ";

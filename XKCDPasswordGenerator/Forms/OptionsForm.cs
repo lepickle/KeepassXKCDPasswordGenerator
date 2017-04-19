@@ -29,7 +29,7 @@ namespace XKCDPasswordGenerator.Forms
         {
             txt_Word_List_Location.Text = Properties.Settings.Default.WordListLocation;
             psc.WordList = System.IO.File.ReadAllLines(Properties.Settings.Default.WordListLocation);
-        }
+        }   
 
         public PasswordSequenceConfiguration PasswordSequenceConfiguration
         {
@@ -66,10 +66,14 @@ namespace XKCDPasswordGenerator.Forms
 
         private void btn_OptionFormOK_Click(object sender, EventArgs e)
         {
+            psc.IsWordCountEnabled = is_wordcount_enabled();
             psc.IsAcrostic = is_acrostic();
             psc.IsDelimited = is_delimited();
             psc.IsMaxCharEnabled = is_maxchar_enabled();
             psc.IsMinCharEnabled = is_minchar_enabled();
+
+            psc.Word_Count = uint.Parse(txt_WordCount.Text);
+
             this.Close();
             this.DialogResult = DialogResult.OK;
         }
