@@ -15,7 +15,11 @@ namespace XKCDPasswordGenerator
         private bool is_minchar_enabled;
 
         private uint word_count;
+
+        private readonly uint DEFAULT_NUM_WORD = 6;
         private string[] word_list;
+
+        private Dictionary<char, List<string>> dictionary = new Dictionary<char, List<string>>();
 
         public PasswordSequenceConfiguration()
         {
@@ -31,6 +35,28 @@ namespace XKCDPasswordGenerator
             set
             {
                 word_list = value;
+                char last_char = word_list[0].ToCharArray()[0];
+                List<string> temp_list = new List<string>();
+                foreach (string words in word_list)
+                {
+                    if (dictionary.ContainsKey(words.ToCharArray()[0]))
+                    {
+                        dictionary[words.ToCharArray()[0]].Add(words);
+                    }
+                    else
+                    {
+                        temp_list.Add(words);
+                        dictionary.Add(words.ToCharArray()[0], temp_list);
+                    }
+                }
+            }
+        }
+
+        public uint DefaultNumWordCount
+        {
+            get
+            {
+                return DEFAULT_NUM_WORD;
             }
         }
 

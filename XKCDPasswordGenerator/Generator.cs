@@ -66,9 +66,9 @@ namespace XKCDPasswordGenerator
             CryptoRandomRange crr = new CryptoRandomRange(crs);
             string word_result = "";
 
-            uint numwords = psc.IsWordCountEnabled ? psc.Word_Count : 6;
+            uint numwords = psc.IsWordCountEnabled ? psc.Word_Count : psc.DefaultNumWordCount;
 
-            for(int i = 0; i <= numwords; i++)
+            for(int i = 0; i < numwords; i++)
             {
                 ulong random_num = crr.GetRandomInRange(0, (ulong)wordlist.Length);
                 word_result += i == numwords-1 ? wordlist[random_num] + "" : wordlist[random_num] + " ";
