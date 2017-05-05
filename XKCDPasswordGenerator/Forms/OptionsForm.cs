@@ -73,6 +73,7 @@ namespace XKCDPasswordGenerator.Forms
             psc.IsMinCharEnabled = is_minchar_enabled();
 
             psc.Word_Count = uint.Parse(txt_WordCount.Text);
+            psc.Delimiter = txt_Delimiter.Text;
 
             this.Close();
             this.DialogResult = DialogResult.OK;
@@ -85,6 +86,20 @@ namespace XKCDPasswordGenerator.Forms
                 Properties.Settings.Default.WordListLocation = wordListFileDialog.FileName;
                 LoadWordList();
             }
+        }
+
+        private void txt_WordCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
         }
     }
 }

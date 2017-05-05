@@ -78,6 +78,7 @@
             this.txt_WordCount.Name = "txt_WordCount";
             this.txt_WordCount.Size = new System.Drawing.Size(207, 20);
             this.txt_WordCount.TabIndex = 17;
+            this.txt_WordCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_WordCount_KeyPress);
             // 
             // cb_WordCount
             // 
