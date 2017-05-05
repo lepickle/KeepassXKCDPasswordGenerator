@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeePassLib.Cryptography;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,13 @@ namespace XKCDPasswordGenerator
         private bool is_minchar_enabled;
 
         private uint word_count;
+        private string delimiter;
 
         private readonly uint DEFAULT_NUM_WORD = 6;
+        private readonly string  DEFAULT_DELIMITER = " ";
         private string[] word_list;
+
+        private CryptoRandomStream crs;
 
         private Dictionary<char, List<string>> dictionary = new Dictionary<char, List<string>>();
 
@@ -60,11 +65,30 @@ namespace XKCDPasswordGenerator
             }
         }
 
+        public string Delimiter
+        {
+            get
+            {
+                if (is_delimited)
+                {
+                    return delimiter;
+                }
+                else
+                {
+                    return DEFAULT_DELIMITER;
+                }
+            }
+            set
+            {
+                delimiter = value.Length > 0 ? value : DEFAULT_DELIMITER;
+            }
+        }
+
         public uint Word_Count
         {
             get
             {
-                return word_count;
+                return is_wordcount_enabled ? word_count : DEFAULT_NUM_WORD;
             }
             set
             {
