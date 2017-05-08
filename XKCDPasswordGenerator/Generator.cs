@@ -17,6 +17,7 @@ namespace XKCDPasswordGenerator
     {
         private static readonly PwUuid UUID = new PwUuid(Guid.NewGuid().ToByteArray());
         PasswordSequenceConfiguration psc = new PasswordSequenceConfiguration();
+        PasswordSequenceConfigurationFactory pscf;
 
         public override PwUuid Uuid
         {
@@ -63,17 +64,10 @@ namespace XKCDPasswordGenerator
 
         public string ChooseWords(string[] wordlist, CryptoRandomStream crs)
         {
-            CryptoRandomRange crr = new CryptoRandomRange(crs);
-            string word_result = "";
-
-            uint numwords = psc.Word_Count;
-
-            for (int i = 0; i < numwords; i++)
-            {
-                ulong random_num = crr.GetRandomInRange(0, (ulong)wordlist.Length);
-                word_result += i == numwords - 1 ? wordlist[random_num] + "" : wordlist[random_num] + psc.Delimiter;
-            }
-
+            pscf = new PasswordSequenceConfigurationFactory(psc, crs);
+            psc.WordList = wordlist;
+            psc.RandomStreamSource = crs;
+            string word_result = pscf.Get_Password();
             return word_result;
         }
     }

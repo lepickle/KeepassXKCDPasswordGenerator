@@ -72,8 +72,14 @@ namespace XKCDPasswordGenerator.Forms
             psc.IsMaxCharEnabled = is_maxchar_enabled();
             psc.IsMinCharEnabled = is_minchar_enabled();
 
-            psc.Word_Count = uint.Parse(txt_WordCount.Text);
+            uint temp_word_count;
+            if (uint.TryParse(txt_WordCount.Text, out temp_word_count))
+            {
+                psc.Word_Count = temp_word_count;
+            }
+
             psc.Delimiter = txt_Delimiter.Text;
+            psc.AcrosticWord = txt_Acrostic.Text;
 
             this.Close();
             this.DialogResult = DialogResult.OK;

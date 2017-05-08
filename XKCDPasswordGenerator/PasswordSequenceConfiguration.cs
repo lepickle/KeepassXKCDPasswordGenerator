@@ -17,6 +17,7 @@ namespace XKCDPasswordGenerator
 
         private uint word_count;
         private string delimiter;
+        private string acrostic_word;
 
         private readonly uint DEFAULT_NUM_WORD = 6;
         private readonly string  DEFAULT_DELIMITER = " ";
@@ -50,18 +51,25 @@ namespace XKCDPasswordGenerator
                     }
                     else
                     {
-                        temp_list.Add(words);
-                        dictionary.Add(words.ToCharArray()[0], temp_list);
+                        dictionary[words.ToCharArray()[0]] = new List<string>();
                     }
                 }
             }
         }
 
-        public uint DefaultNumWordCount
+        public Dictionary<char, List<string>> WordDictionary
         {
             get
             {
-                return DEFAULT_NUM_WORD;
+                return dictionary;
+            }
+        }
+
+        public CryptoRandomStream RandomStreamSource
+        {
+            set
+            {
+                crs = value;
             }
         }
 
@@ -96,6 +104,17 @@ namespace XKCDPasswordGenerator
             }
         }
 
+        public string AcrosticWord
+        {
+            get
+            {
+                return acrostic_word;
+            }
+            set
+            {
+                acrostic_word = value.Length > 0 ? value : "";
+            }
+        }
         public bool IsWordCountEnabled
         {
             get
