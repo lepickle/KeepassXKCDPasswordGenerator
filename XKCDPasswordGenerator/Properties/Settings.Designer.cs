@@ -34,5 +34,125 @@ namespace XKCDPasswordGenerator.Properties {
                 this["WordListLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsWordCountEnabled {
+            get {
+                return ((bool)(this["IsWordCountEnabled"]));
+            }
+            set {
+                this["IsWordCountEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsAcrostic {
+            get {
+                return ((bool)(this["IsAcrostic"]));
+            }
+            set {
+                this["IsAcrostic"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsDelimited {
+            get {
+                return ((bool)(this["IsDelimited"]));
+            }
+            set {
+                this["IsDelimited"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsMaxCharEnabled {
+            get {
+                return ((bool)(this["IsMaxCharEnabled"]));
+            }
+            set {
+                this["IsMaxCharEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsMinCharEnabled {
+            get {
+                return ((bool)(this["IsMinCharEnabled"]));
+            }
+            set {
+                this["IsMinCharEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint WordCountEnabled_Value {
+            get {
+                return ((uint)(this["WordCountEnabled_Value"]));
+            }
+            set {
+                this["WordCountEnabled_Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Acrostic_Value {
+            get {
+                return ((string)(this["Acrostic_Value"]));
+            }
+            set {
+                this["Acrostic_Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Delimited_Value {
+            get {
+                return ((string)(this["Delimited_Value"]));
+            }
+            set {
+                this["Delimited_Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MaxCharEnabled_Value {
+            get {
+                return ((string)(this["MaxCharEnabled_Value"]));
+            }
+            set {
+                this["MaxCharEnabled_Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MinCharEnabled_Value {
+            get {
+                return ((string)(this["MinCharEnabled_Value"]));
+            }
+            set {
+                this["MinCharEnabled_Value"] = value;
+            }
+        }
     }
 }

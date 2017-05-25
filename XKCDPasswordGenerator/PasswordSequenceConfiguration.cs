@@ -77,14 +77,7 @@ namespace XKCDPasswordGenerator
         {
             get
             {
-                if (is_delimited)
-                {
-                    return delimiter;
-                }
-                else
-                {
-                    return DEFAULT_DELIMITER;
-                }
+                return is_delimited ? delimiter : DEFAULT_DELIMITER;
             }
             set
             {
