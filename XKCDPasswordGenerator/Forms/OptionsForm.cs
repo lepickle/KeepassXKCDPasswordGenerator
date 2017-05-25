@@ -12,18 +12,27 @@ namespace XKCDPasswordGenerator.Forms
 {
     public partial class OptionsForm : Form
     {
-        public OptionsForm()
+        PasswordSequenceConfiguration psc;
+
+        public OptionsForm(PasswordSequenceConfiguration psc)
         {
             InitializeComponent();
+            this.psc = psc;
         }
-
-        PasswordSequenceConfiguration psc = new PasswordSequenceConfiguration();
 
         private void OptionsForm_Load(object sender, EventArgs e)
         {
-            txt_Word_List_Location.Text = Properties.Resources.WordListLocation;
-            psc.WordList = System.IO.File.ReadAllLines(Properties.Resources.WordListLocation);
+            LoadWordList();
+            SetRadioButtons();
+            SetTextFields(); 
         }
+
+        public void LoadWordList()
+        {
+
+            txt_Word_List_Location.Text = Properties.Settings.Default.WordListLocation;
+            psc.WordList = System.IO.File.ReadAllLines(Properties.Settings.Default.WordListLocation);
+        }   
 
         public PasswordSequenceConfiguration PasswordSequenceConfiguration
         {
@@ -58,14 +67,75 @@ namespace XKCDPasswordGenerator.Forms
             return cb_Min_Chars.Checked ? true : false;
         }
 
+        private void SetRadioButtons()
+        {
+            cb_WordCount.Checked = Properties.Settings.Default.IsWordCountEnabled;
+            cb_Acrostic.Checked = Properties.Settings.Default.IsAcrostic;
+            cb_Delimiter.Checked = Properties.Settings.Default.IsDelimited;
+            cb_Max_Chars.Checked = Properties.Settings.Default.IsMaxCharEnabled;
+            cb_Min_Chars.Checked = Properties.Settings.Default.IsMinCharEnabled;
+        }
+
+        private void SetTextFields()
+        {
+            txt_WordCount.Text = Properties.Settings.Default.WordCountEnabled_Value.ToString();
+            txt_Acrostic.Text = Properties.Settings.Default.Acrostic_Value;
+            txt_Delimiter.Text = Properties.Settings.Default.Delimited_Value;
+            txt_Max_Chars.Text = Properties.Settings.Default.MaxCharEnabled_Value;
+            txt_Min_Chars.Text = Properties.Settings.Default.MinCharEnabled_Value;
+        }
+
         private void btn_OptionFormOK_Click(object sender, EventArgs e)
         {
+            psc.IsWordCountEnabled = is_wordcount_enabled();
             psc.IsAcrostic = is_acrostic();
             psc.IsDelimited = is_delimited();
             psc.IsMaxCharEnabled = is_maxchar_enabled();
             psc.IsMinCharEnabled = is_minchar_enabled();
+
+            uint temp_word_count;
+            if (uint.TryParse(txt_WordCount.Text, out temp_word_count))
+            {
+                psc.Word_Count = temp_word_count;
+            }
+
+            Properties.Settings.Default.IsWordCountEnabled = psc.IsWordCountEnabled;
+            Properties.Settings.Default.IsAcrostic = psc.IsAcrostic;
+            Properties.Settings.Default.IsDelimited = psc.IsDelimited;
+            Properties.Settings.Default.IsMaxCharEnabled = psc.IsMaxCharEnabled;
+            Properties.Settings.Default.IsMinCharEnabled = psc.IsMinCharEnabled;
+            Properties.Settings.Default.WordCountEnabled_Value = psc.Word_Count;
+            Properties.Settings.Default.Acrostic_Value = txt_Acrostic.Text;
+            Properties.Settings.Default.Delimited_Value = txt_Delimiter.Text;
+
+            psc.Delimiter = txt_Delimiter.Text;
+            psc.AcrosticWord = txt_Acrostic.Text;
+
             this.Close();
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void btn_OpenWordList_Click(object sender, EventArgs e)
+        {
+            if (wordListFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.WordListLocation = wordListFileDialog.FileName;
+                LoadWordList();
+            }
+        }
+
+        private void txt_WordCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
         }
     }
 }
